@@ -20,8 +20,7 @@ class callbacktest extends AsyncFlatSpec with should.Matchers {
     promise.future
   }
 
-    // this test causes the whole process to
-    // terminate with JSEnvRPC$RunTerminatedException so no other tests run!
+    // this test sometimes terminates the whole process with JSEnvRPC$RunTerminatedException so no other tests run!
   "A failing callback" should "fail test" in {
     val promise = Promise[Assertion]()
     new CallBackerByConstructor(one => promise success (one should be (2)))
